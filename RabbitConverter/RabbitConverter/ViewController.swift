@@ -10,6 +10,21 @@ import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     private let temperatureData = ["°C", "°F"]
+    // 1 xx equals yy meters
+    private let lengthMap = [
+        "inch": 0.0254,
+        "foot": 0.3048,
+        "yard": 0.9144,
+        "mile": 1609.344,
+        "m": 1.00,
+        "cm": 100.00,
+        "mm": 1000.00,
+        "km": 0.001
+    ]
+    
+    private let areaMap = [
+        ""
+    ]
 
     @IBAction func convertBtn(_ sender: Any) {
         self.view.endEditing(true)

@@ -39,12 +39,6 @@
                                     <action selector="leftButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1EF-XS-b0d"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7up-VD-UwN">
-                                <rect key="frame" x="16" y="334" width="343" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B01-1n-TEe">
                                 <rect key="frame" x="0.0" y="451" width="375" height="216"/>
                             </pickerView>
@@ -74,7 +68,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Convert"/>
                                 <connections>
-                                    <action selector="convertBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QGJ-rl-GPg"/>
+                                    <action selector="convertClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QGJ-rl-GPg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ij1-P3-opx">
@@ -93,23 +87,19 @@
                             <constraint firstItem="B01-1n-TEe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LW7-Ss-VRz"/>
                             <constraint firstItem="xvN-TS-qFE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Lhj-DW-jFB"/>
                             <constraint firstItem="xvN-TS-qFE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="b9r-Lx-DwT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7up-VD-UwN" secondAttribute="trailing" constant="16" id="f1D-PR-ZqR"/>
-                            <constraint firstItem="gxJ-vv-asJ" firstAttribute="top" secondItem="7up-VD-UwN" secondAttribute="bottom" constant="43" id="hs0-qf-PdH"/>
                             <constraint firstItem="gxJ-vv-asJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="kCZ-J2-aJH"/>
                             <constraint firstItem="B01-1n-TEe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p58-aE-oRE"/>
                             <constraint firstItem="B01-1n-TEe" firstAttribute="top" secondItem="gxJ-vv-asJ" secondAttribute="bottom" constant="74" id="qmU-7c-Pbv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gxJ-vv-asJ" secondAttribute="trailing" constant="16" id="tfC-Aa-9Ah"/>
-                            <constraint firstItem="7up-VD-UwN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="z5R-tt-5sY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="inputDisplay" destination="7up-VD-UwN" id="qYl-Jh-rgp"/>
                         <outlet property="inputText" destination="Stp-yt-bTL" id="p5S-ZN-mKF"/>
                         <outlet property="leftButton" destination="tSW-8P-9VR" id="ChH-bG-AW2"/>
                         <outlet property="pickerView" destination="B01-1n-TEe" id="UN4-Mj-mCX"/>
+                        <outlet property="resultText" destination="gxJ-vv-asJ" id="b1u-mb-INN"/>
                         <outlet property="rightButton" destination="ODx-jc-uQi" id="eQB-r8-z0y"/>
-                        <outlet property="rightLabel" destination="gxJ-vv-asJ" id="b1u-mb-INN"/>
                         <outlet property="segmentedControl" destination="xvN-TS-qFE" id="SFj-PO-f1i"/>
                     </connections>
                 </viewController>

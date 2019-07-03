@@ -9,9 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
-    // ==================== constents:
+    // ==================== Constents:
     private let temperatureData = ["°C", "°F"]
-    // 1 xx equals yy meters
+    
+    // Length: 1 xx equals yy meters
     private let lengthMap = [
         "inch": 0.0254,
         "foot": 0.3048,
@@ -24,7 +25,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     ]
     private let lengthList = ["inch", "foot", "yard", "mile", "m", "cm", "mm", "km"]
     
-    // 1 square XX equals yy square meters
+    // Area: 1 square XX equals yy square meters
     private let areaMap = [
         "sqcm": 0.0001,
         "sqm": 1,
@@ -35,7 +36,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     ]
     private let areaList = ["sqcm", "sqm", "sqinch", "sqf", "acre", "sqmile"]
     
-    // volume: to L
+    // Volume: to L
     private let volumeMap = [
         "tbsp": 0.015,
         "fl oz": 0.03,
@@ -48,7 +49,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     ]
     private let volumeList = ["tbsp", "fl oz", "cup", "pint", "quart", "gallon", "ml", "L"]
     
-    // weight: to kg
+    // Weight: to kg
     private let weightMap = [
         "gram": 0.001,
         "kg": 1,
@@ -57,9 +58,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         "ton": 1000
     ]
     private let weightList = ["gram", "kg", "ounze oz", "pound lb", "ton"]
+    private var dictArray = [[String : Double]]()
+    private var listArray = [[String]]()
     
     // ==================== UI variables:
-
+    // segment control
+    var activeTabIndex = 0
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBAction func indexChanged(_ sender: Any) {
         activeTabIndex = segmentedControl.selectedSegmentIndex
@@ -68,14 +72,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         reloadDisplay()
     }
     
-    @IBOutlet var inputText: UITextField!
-    @IBOutlet var inputDisplay: UILabel!
+    // UIPickerView
     @IBOutlet var pickerView: UIPickerView! = UIPickerView()
-    @IBOutlet var rightLabel: UILabel!
+    
+    // input and output label area
+    @IBOutlet var inputText: UITextField!
+    @IBOutlet var resultText: UILabel!
+    
+    // left and right button to show the unit
+    @IBOutlet weak var activeButton: UIButton!
     @IBOutlet var leftButton: UIButton!
     @IBOutlet var rightButton: UIButton!
-    @IBOutlet weak var activeButton: UIButton!
-    var activeTabIndex = 0
     @IBAction func leftButtonAction(_ sender: Any) {
         self.view.endEditing(true)
         pickerView.isHidden = false
@@ -83,8 +90,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
     }
     @IBAction func rightButtonAction(_ sender: Any) {
+        self.view.endEditing(true)
         pickerView.isHidden = false
         activeButton = rightButton
+    }
+    
+    // get the result
+    @IBAction func convertClicked(_ sender: Any) {
+        self.view.endEditing(true)
+        // check the left and right value
+        let inputVal = inputText.text
+        let leftText = leftButton.titleLabel?.text
+        let rightText = rightButton.titleLabel?.text
+        if inputVal != nil && leftText != nil && rightText != nil {
+            compute(leftText: leftText!, rightText: rightText!, inputVal: Double(inputVal!)!)
+        }
     }
     @IBAction func revertClicked(_ sender: Any) {
         // revert the current
@@ -98,31 +118,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             compute(leftText: rightText!, rightText: leftText!, inputVal: Double(inputVal!)!)
         }
     }
-    
-    @IBAction func convertBtn(_ sender: Any) {
-        self.view.endEditing(true)
-        // check the left and right value
-        let inputVal = inputText.text
-        let leftText = leftButton.titleLabel?.text
-        let rightText = rightButton.titleLabel?.text
-        if inputVal != nil && leftText != nil && rightText != nil {
-            compute(leftText: leftText!, rightText: rightText!, inputVal: Double(inputVal!)!)
-        }
-    }
-    
-    private var dictArray = [[String : Double]]()
-    private var listArray = [[String]]()
 
-    
-    // ============ functions:
+    // ============ System functions:
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickerView.isHidden = true
-        
+    
         pickerView.delegate = self
         pickerView.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        pickerView.isHidden = true
+
         dictArray = [lengthMap, areaMap, volumeMap, weightMap]
         listArray = [lengthList, areaList, volumeList, weightList]
         
@@ -183,36 +187,33 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-    private func reloadDisplay() {
-        inputText.text = ""
-        rightLabel.text = ""
-        inputDisplay.text = ""
-    }
-    
-    // =============== keyboard hide
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    // =============== compute function
+    // =============== Main Feature Funtion:
     private func compute(leftText: String, rightText: String, inputVal: Double) {
-        // show the value
-        inputDisplay.text = String(inputVal) + leftText + " is:"
-        
         if activeTabIndex == 0 {
             // temperature
             if leftText == "°C" && rightText == "°F" {
-                rightLabel.text = String(format: "%.2f",(9/5) * inputVal + 32)
+                resultText.text = String(format: "%.2f",(9/5) * inputVal + 32)
             } else if leftText == "°F" && rightText == "°C" {
-                rightLabel.text = String(format: "%.2f",(5/9) * (inputVal - 32))
+                resultText.text = String(format: "%.2f",(5/9) * (inputVal - 32))
             } else {
-                rightLabel.text = String(format: "%.2f", inputVal)
+                resultText.text = String(format: "%.2f", inputVal)
             }
         } else {
             // other unit group
             let res = Double((dictArray[activeTabIndex - 1][leftText]! / dictArray[activeTabIndex - 1][rightText]!) * inputVal)
-            rightLabel.text = String(format: "%.2f", res) + rightText
+            resultText.text = String(format: "%.2f", res)
         }
+    }
+    
+    // =============== Helper functions:
+    private func reloadDisplay() {
+        inputText.text = ""
+        resultText.text = ""
+    }
+    
+    // keyboard hide
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 

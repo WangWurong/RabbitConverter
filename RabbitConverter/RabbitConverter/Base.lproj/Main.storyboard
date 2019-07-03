@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,6 +57,9 @@
                                     <segment title="Volume"/>
                                     <segment title="Weight"/>
                                 </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Prw-5M-Hpb"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODx-jc-uQi">
                                 <rect key="frame" x="230" y="266" width="46" height="30"/>
@@ -72,6 +75,14 @@
                                 <state key="normal" title="Convert"/>
                                 <connections>
                                     <action selector="convertBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QGJ-rl-GPg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ij1-P3-opx">
+                                <rect key="frame" x="161" y="147" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Revert"/>
+                                <connections>
+                                    <action selector="revertClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZP5-VQ-qiF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -99,6 +110,7 @@
                         <outlet property="pickerView" destination="B01-1n-TEe" id="UN4-Mj-mCX"/>
                         <outlet property="rightButton" destination="ODx-jc-uQi" id="eQB-r8-z0y"/>
                         <outlet property="rightLabel" destination="gxJ-vv-asJ" id="b1u-mb-INN"/>
+                        <outlet property="segmentedControl" destination="xvN-TS-qFE" id="SFj-PO-f1i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

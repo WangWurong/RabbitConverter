@@ -99,6 +99,7 @@
                         <outlet property="leftButton" destination="tSW-8P-9VR" id="ChH-bG-AW2"/>
                         <outlet property="pickerView" destination="B01-1n-TEe" id="UN4-Mj-mCX"/>
                         <outlet property="resultText" destination="gxJ-vv-asJ" id="b1u-mb-INN"/>
+                        <outlet property="revertButton" destination="ij1-P3-opx" id="ns6-Lr-dW4"/>
                         <outlet property="rightButton" destination="ODx-jc-uQi" id="eQB-r8-z0y"/>
                         <outlet property="segmentedControl" destination="xvN-TS-qFE" id="SFj-PO-f1i"/>
                     </connections>

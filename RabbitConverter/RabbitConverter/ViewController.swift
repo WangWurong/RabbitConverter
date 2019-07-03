@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     // ==================== Constents:
-    private let temperatureData = ["°C", "°F"]
+    private let temperatureData = ["°F", "°C"]
     
     // Length: 1 xx equals yy meters
     private let lengthMap = [
@@ -67,7 +67,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBAction func indexChanged(_ sender: Any) {
         activeTabIndex = segmentedControl.selectedSegmentIndex
-        print(activeTabIndex)
         reloadPickerView()
         reloadDisplay()
     }
@@ -104,8 +103,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let rightText = rightButton.titleLabel?.text
         if inputVal != nil && leftText != nil && rightText != nil {
             compute(leftText: leftText!, rightText: rightText!, inputVal: Double(inputVal!)!)
+            revertButton.isHidden = false
         }
     }
+    @IBOutlet var revertButton: UIButton!
     @IBAction func revertClicked(_ sender: Any) {
         // revert the current
         let inputVal = inputText.text
@@ -131,6 +132,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         listArray = [lengthList, areaList, volumeList, weightList]
         
         reloadPickerView()
+        reloadDisplay()
     }
     
     override func didReceiveMemoryWarning() {
@@ -162,11 +164,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if activeTabIndex == 0 {
-            print(temperatureData[row])
             activeButton.setTitle(temperatureData[row], for: .normal)
             pickerView.isHidden = true;
         } else {
-            print(listArray[activeTabIndex - 1][row])
             activeButton.setTitle(listArray[activeTabIndex - 1][row], for: .normal)
             pickerView.isHidden = true;
         }
@@ -209,6 +209,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     private func reloadDisplay() {
         inputText.text = ""
         resultText.text = ""
+        revertButton.isHidden = true
     }
     
     // keyboard hide

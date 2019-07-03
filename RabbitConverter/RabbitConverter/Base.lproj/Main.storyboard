@@ -39,14 +39,6 @@
                                     <action selector="leftButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1EF-XS-b0d"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBL-6P-qsj">
-                                <rect key="frame" x="158" y="275" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Convert"/>
-                                <connections>
-                                    <action selector="convertBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QGJ-rl-GPg"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7up-VD-UwN">
                                 <rect key="frame" x="16" y="334" width="343" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -66,6 +58,22 @@
                                     <segment title="Weight"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODx-jc-uQi">
+                                <rect key="frame" x="230" y="266" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="rightButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kNl-RE-i2T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBL-6P-qsj">
+                                <rect key="frame" x="160" y="318" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Convert"/>
+                                <connections>
+                                    <action selector="convertBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QGJ-rl-GPg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -89,6 +97,7 @@
                         <outlet property="inputText" destination="Stp-yt-bTL" id="p5S-ZN-mKF"/>
                         <outlet property="leftButton" destination="tSW-8P-9VR" id="ChH-bG-AW2"/>
                         <outlet property="pickerView" destination="B01-1n-TEe" id="UN4-Mj-mCX"/>
+                        <outlet property="rightButton" destination="ODx-jc-uQi" id="eQB-r8-z0y"/>
                         <outlet property="rightLabel" destination="gxJ-vv-asJ" id="b1u-mb-INN"/>
                     </connections>
                 </viewController>

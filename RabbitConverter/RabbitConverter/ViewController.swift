@@ -49,9 +49,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var pickerView: UIPickerView! = UIPickerView()
     @IBOutlet var rightLabel: UILabel!
     @IBOutlet var leftButton: UIButton!
+    @IBOutlet var rightButton: UIButton!
+    
+    @IBOutlet weak var activeButton: UIButton!
+    
     @IBAction func leftButtonAction(_ sender: Any) {
         self.view.endEditing(true)
         pickerView.isHidden = false
+        activeButton = leftButton
+        
+    }
+    
+    @IBAction func rightButtonAction(_ sender: Any) {
+        pickerView.isHidden = false
+        activeButton = rightButton
     }
     
     override func viewDidLoad() {
@@ -63,6 +74,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         pickerView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+//    private func triggerPickerView(_ sender: Any) {
+//        pickerView.isHidden = false
+//
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -83,7 +99,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print(temperatureData[row])
-        leftButton.setTitle(temperatureData[row], for: .normal)
+        activeButton.setTitle(temperatureData[row], for: .normal)
         pickerView.isHidden = true;
     }
     

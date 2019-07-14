@@ -61,12 +61,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     private var dictArray = [[String : Double]]()
     private var listArray = [[String]]()
     
+   
+    
     // ==================== UI variables:
-    // segment control
+    // customized segment control
     var activeTabIndex = 0
-    @IBOutlet var segmentedControl: UISegmentedControl!
-    @IBAction func indexChanged(_ sender: Any) {
-        activeTabIndex = segmentedControl.selectedSegmentIndex
+    @IBOutlet var linerSegmentControl: LinerSegmentControl!
+    @IBAction func linerSelectorIndexChanged(_ sender: Any) {
+        activeTabIndex = linerSegmentControl.selectedSegmentIndex
         reloadPickerView()
         reloadDisplay()
     }
